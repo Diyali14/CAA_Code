@@ -1,0 +1,49 @@
+module magnitudeComparator(
+    input [3:0]a,
+    input [3:0]b,
+    output reg g,
+    output reg eq,
+    output reg l
+    );
+    
+    always@(*)begin
+    if(a>b)
+    begin
+    g=1;
+    eq=0;
+    l=0;
+    end
+    else if(a<b)
+    begin
+    g=0;
+    eq=0;
+    l=1;
+    end
+    else
+    begin
+    g=0;
+    eq=1;
+    l=0;
+    end
+    end
+endmodule
+
+module magnitudeComparator_tb();
+    reg [3:0]a;
+    reg [3:0]b;
+    wire g;
+    wire eq;
+    wire l;
+    
+    magnitudeComparator uut(.a(a),.b(b),.g(g),.eq(eq),.l(l));
+    
+    initial begin
+    for(a=0;a<5;a=a+1)
+    begin
+    for(b=0;b<6;b=b+1)
+    begin
+    #5;
+    end
+    end
+    end
+endmodule
