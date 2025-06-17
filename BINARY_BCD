@@ -1,0 +1,24 @@
+module binarybcd(
+    input [4:0]inp,
+    output [4:0]out
+    );
+    
+    assign out = inp>9?inp+6:inp;
+    
+endmodule
+
+module binarybcd_tb();
+
+reg [4:0]inp;
+wire [4:0]out;
+
+binarybcd uut(.inp(inp),.out(out));
+
+initial begin
+
+for(inp=0;inp<20;inp=inp+1)
+begin
+#50;
+end
+end
+endmodule
