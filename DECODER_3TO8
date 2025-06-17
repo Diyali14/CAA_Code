@@ -1,0 +1,30 @@
+module decoder3to8(
+    input [2:0]s,
+    output [7:0]d
+    );
+    
+    assign d[0] = (!s[0])&(!s[1])&(!s[2]);
+    assign d[1] = (s[0])&(!s[1])&(!s[2]);
+    assign d[2] = (!s[0])&(s[1])&(!s[2]);
+    assign d[3] = (s[0])&(s[1])&(!s[2]);
+    assign d[4] = (!s[0])&(!s[1])&(s[2]);
+    assign d[5] = (s[0])&(!s[1])&(s[2]);
+    assign d[6] = (!s[0])&(s[1])&(s[2]);
+    assign d[7] = (s[0])&(s[1])&(s[2]);
+endmodule
+
+module decoder3to8_tb();
+
+reg [2:0]s;
+wire [7:0]d;
+
+decoder3to8 uut(.s(s),.d(d));
+
+initial begin
+for(integer i = 0;i<8;i=i+1)
+begin
+s=i;
+#100;
+end
+end
+endmodule
