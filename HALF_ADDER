@@ -1,0 +1,33 @@
+module halfadder(
+    input a,
+    input b,
+    output s,
+    output c
+    );
+    
+    assign s = a ^ b;
+    assign c = a & b;
+endmodule
+
+module halfadder_tb();
+
+reg a;
+reg b;
+wire s;
+wire c;
+
+halfadder uut(.a(a), .b(b), .s(s), .c(c));
+
+initial begin
+
+
+  for (integer i = 0; i < 2; i = i + 1) begin
+    for (integer j = 0; j < 2; j = j + 1) begin
+      a = i;
+      b = j;
+      #100;
+    end
+  end
+end
+
+endmodule
