@@ -1,0 +1,30 @@
+module tristatebuffer(
+    input Q,
+    input E,
+    output O
+    );
+    
+    assign O = E==1?Q:1'bz;
+endmodule
+
+module tristatebuffer_tb();
+
+reg Q;
+reg E;
+wire O;
+tristatebuffer uut(.Q(Q),.E(E),.O(O));
+
+initial begin
+Q=0;
+E=0;
+#100
+Q=0;
+E=1;
+#100
+Q=1;
+E=0;
+#100
+Q=1;
+E=1;
+end
+endmodule
