@@ -1,0 +1,40 @@
+
+module fulladder(
+    input a,
+    input b,
+    input cin,
+    output s,
+    output cout
+    );
+    
+    assign s = a^b^cin;
+    assign cout = (a&b) | (b&cin) |(cin&a);
+endmodule
+
+module fulladder_tb();
+
+reg a;
+reg b;
+reg cin;
+wire s; 
+wire cout;
+
+fulladder uut(.a(a),.b(b), .cin(cin), .s(s),.cout(cout));
+
+initial begin
+
+for(integer i = 0;i<2;i=i+1)
+begin
+for(integer j =0; j<2; j= j+1)
+begin
+for(integer k =0; k<2;k=k+1)
+begin
+a=i;
+b=j;
+cin=k;
+#100;
+end
+end
+end
+end
+endmodule
