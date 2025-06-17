@@ -1,0 +1,23 @@
+module binaryexcess3(
+    input [3:0]inp,
+    output [3:0]o
+    );
+    
+    assign o = inp<13?inp+3 : 4'bzzzz;
+endmodule
+
+module binaryexcess3_tb();
+
+reg [3:0]inp;
+wire [3:0]o;
+
+binaryexcess3 uut(.inp(inp),.o(o));
+
+initial begin
+
+for(inp=0;inp<16;inp=inp+1)
+begin
+#50;
+end
+end
+endmodule
