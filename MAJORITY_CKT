@@ -1,0 +1,20 @@
+module majoritycir(
+    input[2:0] inp,
+    output out
+    );
+    assign out=(inp[2]&(inp[1]^inp[0]))|(inp[1]&inp[0]);
+endmodule
+
+module majoritycir_tb();
+
+reg[2:0] inp;
+wire out;
+
+majoritycir uut(.inp(inp),.out(out));
+initial begin
+for(inp=0;inp<8;inp=inp+1)
+begin
+#25;
+end
+end
+endmodule
