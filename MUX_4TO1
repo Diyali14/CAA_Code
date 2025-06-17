@@ -1,0 +1,26 @@
+module mux4to1(
+    input [1:0]s,
+    input [3:0]d,
+    output o
+);
+
+assign o = (((!s[1])&(!s[0]))&(d[0])) | (((!s[1])&(s[0]))&(d[1])) | (((s[1])&(!s[0]))&(d[2]))  | (((s[1])&(s[0]))&(d[3]));
+
+endmodule
+
+module mux4to1_tb();
+reg [1:0]s;
+reg [3:0]d;
+wire o;
+
+mux4to1 uut(.s(s),.d(d),.o(o));
+
+initial begin
+d=1001;
+for(integer i =0;i<4;i=i+1)
+begin
+s=i;
+#100;
+end
+end
+endmodule
